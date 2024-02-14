@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Github User Finder</h1>
+    </header>
+    <main>
+      <div class="container">
+        <input type="text" placeholder="Enter github username" /><br />
+        <img class="user" src="images/github.jpg" alt="github-img" />
+        <h2>Username: xyz</h2>
+        <div class="item">
+          <div class="flex">
+            <h3 class="followers">Followers:</h3>
+
+            <img class="follower-img" src="images/follower.jpg" alt="" />
+            <img class="follower-img" src="images/follower.jpg" alt="" />
+            <img class="follower-img" src="images/follower.jpg" alt="" />
+          </div>
+          <div class="flex">
+            <h3 class="following">Following:</h3>
+            <img class="following-img" src="images/follower.jpg" alt="" />
+            <img class="following-img" src="images/follower.jpg" alt="" />
+            <img class="following-img" src="images/follower.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
+<!-- - API: https://api.github.com/users/{username}
+- Followers List: https://api.github.com/users/{username}/followers
+- Following List: https://api.github.com/users/prank7/following -->
