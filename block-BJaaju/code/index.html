@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Search App</title>
+</head>
+<body>
+  <div>
+    <input type="text" id="searchInput" placeholder="Enter your search term">
+    <button onclick="searchImages()">Search</button>
+  </div>
+  <div id="imageList"></div>
+
+  <script>
+    function fetchImages(query) {
+      const url = `https://api.unsplash.com/photos/random?count=10&query=${query}&client_id=CyfBh5IXwV-yFcUlzTdm6BJfD1kpWyWoDUev7iNKKug`;
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", url);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          displayImages(data);
+        } else {
+          console.error("Failed to fetch images");
+        }
+      };
+      xhr.onerror = function () {
+        console.error("Failed to fetch images");
+      };
+      xhr.send();
+    }
+
+    function displayImages(images) {
+      const imageList = document.getElementById("imageList");
+      imageList.innerHTML = ""; // Clear previous images
+      images.forEach(image => {
+        const img = document.createElement("img");
+        img.src = image.urls.small;
+        img.alt = image.alt_description;
+        imageList.appendChild(img);
+      });
+    }
+
+    function searchImages() {
+      const searchTerm = document.getElementById("searchInput").value;
+      fetchImages(searchTerm);
+    }
+
+    // Initial loading of random images
+    window.onload = function () {
+      fetchImages("random");
+    };
+  </script>
+</body>
+</html>
